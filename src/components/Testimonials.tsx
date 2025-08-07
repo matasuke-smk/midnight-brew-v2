@@ -235,8 +235,8 @@ const Testimonials: React.FC = () => {
             </div>
           </div>
 
-          {/* Navigation Buttons - 前後のボタン */}
-          <div className="hidden sm:flex justify-center mt-8 space-x-4">
+          {/* Navigation Buttons - 前後のボタン（PC・スマホ共通） */}
+          <div className="flex justify-center mt-8 space-x-4">
             <button
               onClick={prevTestimonial}
               onMouseEnter={() => setIsHovered(true)}
@@ -268,12 +268,6 @@ const Testimonials: React.FC = () => {
             ))}
           </div>
           
-          {/* スマホ用スワイプガイド */}
-          <div className="sm:hidden text-center mt-4">
-            <p className="text-midnight-100 text-sm">
-              🔄 スワイプで循環 →
-            </p>
-          </div>
         </div>
 
         {/* Stats */}
