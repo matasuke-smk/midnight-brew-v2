@@ -80,14 +80,14 @@ const DiagnosticModal: React.FC<DiagnosticModalProps> = ({ isOpen, onClose, onOp
     }
     
     let bean = 'エチオピア イルガチェフェ';
-    let description = '花のような香りとベリー系の酸味が特徴的な、華やかで上品な味わい';
+    let description = 'ブルーベリーのような華やかな酸味と、ワインのような芳醇な香りが特徴。花のような上品なアロマが朝の空気に溶け込み、一日の始まりを特別なひとときに変えてくれます。朝の目覚めの一杯に最適です。';
     
     if (answers.taste === 'chocolate') {
       bean = 'コロンビア ウィラ';
-      description = 'チョコレートとナッツの甘みが調和した、バランスの良い味わい';
+      description = 'チョコレートとキャラメルのような甘みが絶妙に調和し、ナッツの香ばしさが後味に残る贅沢な一杯。午後のリラックスタイムやデザートとの相性も抜群で、心地よいひとときを演出します。';
     } else if (answers.taste === 'deep') {
       bean = 'インドネシア マンデリン';
-      description = '深いコクと豊かな苦味、アーシーな風味が楽しめる力強い味わい';
+      description = '深いコクと豊かな苦味、大地を感じさせるアーシーな風味が力強く響く個性的な味わい。食後のコーヒータイムに最適で、満足感のある余韻が長く続く、コーヒー愛好家に愛される逸品です。';
     }
     
     return { plan, planName, price, originalPrice, bean, description };
