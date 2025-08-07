@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>右方向のみスライダー</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f0f0f0;
+    }
+    
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+    }
+    
+    .slider-container {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      height: 300px;
+    }
+    
+    .slider {
+      display: flex;
+      height: 100%;
+      width: 1200%; /* 12つのスライド分 */
+      transition: transform 0.5s ease-in-out;
+    }
+    
+    .slide {
+      flex: 0 0 8.333333%; /* 100% ÷ 12 */
+      width: 8.333333%;
+      height: 100%;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      border-left: 5px solid;
+      box-sizing: border-box;
+    }
+    
+    .slide1 {
+      background: #ffebee;
+      border-color: #f44336;
+    }
+    
+    .slide2 {
+      background: #e8f5e8;
+      border-color: #4caf50;
+    }
+    
+    .slide3 {
+      background: #e3f2fd;
+      border-color: #2196f3;
+    }
+    
+    .slide4 {
+      background: #fff8e1;
+      border-color: #ff9800;
+    }
+    
+    .slide-text {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    
+    .slide-author {
+      font-weight: bold;
+      color: #666;
+      font-size: 14px;
+    }
+    
+    .controls {
+      text-align: center;
+      margin: 20px 0;
+    }
+    
+    .btn {
+      background: #2196f3;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      margin: 0 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    
+    .btn:hover {
+      background: #1976d2;
+    }
+    
+    .info {
+      text-align: center;
+      margin: 20px 0;
+      padding: 15px;
+      background: #e3f2fd;
+      border-radius: 5px;
+      border: 1px solid #2196f3;
+    }
+    
+    .current-slide {
+      font-weight: bold;
+      color: #1976d2;
+    }
+    
+    .note {
+      background: #e8f5e8;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 5px;
+      border: 1px solid #4caf50;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>お客様の声 - 右方向のみスライダー</h1>
+  
+  <div class="note">
+    <strong>✅ シンプルな右方向のみ移動</strong><br>
+    同じスライドを2回配置して、右方向のみで無限ループを実現
+  </div>
+  
+  <div class="info">
+    <div>現在のスライド: <span class="current-slide" id="current">1</span> / 4</div>
+    <div>状態: <span id="status">手動モード</span></div>
+  </div>
+  
+  <div class="slider-container">
+    <div class="slider" id="slider">
+      <!-- 最初のセット -->
+      <div class="slide slide1">
+        <div class="slide-text">これは1番目のお客様の声です。赤色の背景で表示されています。</div>
+        <div class="slide-author">田中太郎 - 株式会社A</div>
+      </div>
+      
+      <div class="slide slide2">
+        <div class="slide-text">これは2番目のお客様の声です。緑色の背景で表示されています。</div>
+        <div class="slide-author">佐藤花子 - 株式会社B</div>
+      </div>
+      
+      <div class="slide slide3">
+        <div class="slide-text">これは3番目のお客様の声です。青色の背景で表示されています。</div>
+        <div class="slide-author">山田次郎 - 株式会社C</div>
+      </div>
+      
+      <div class="slide slide4">
+        <div class="slide-text">これは4番目のお客様の声です。オレンジ色の背景で表示されています。</div>
+        <div class="slide-author">鈴木美咲 - 株式会社D</div>
+      </div>
+      
+      <!-- 2回目のセット -->
+      <div class="slide slide1">
+        <div class="slide-text">これは1番目のお客様の声です。赤色の背景で表示されています。</div>
+        <div class="slide-author">田中太郎 - 株式会社A</div>
+      </div>
+      
+      <div class="slide slide2">
+        <div class="slide-text">これは2番目のお客様の声です。緑色の背景で表示されています。</div>
+        <div class="slide-author">佐藤花子 - 株式会社B</div>
+      </div>
+      
+      <div class="slide slide3">
+        <div class="slide-text">これは3番目のお客様の声です。青色の背景で表示されています。</div>
+        <div class="slide-author">山田次郎 - 株式会社C</div>
+      </div>
+      
+      <div class="slide slide4">
+        <div class="slide-text">これは4番目のお客様の声です。オレンジ色の背景で表示されています。</div>
+        <div class="slide-author">鈴木美咲 - 株式会社D</div>
+      </div>
+      
+      <!-- 3回目のセット -->
+      <div class="slide slide1">
+        <div class="slide-text">これは1番目のお客様の声です。赤色の背景で表示されています。</div>
+        <div class="slide-author">田中太郎 - 株式会社A</div>
+      </div>
+      
+      <div class="slide slide2">
+        <div class="slide-text">これは2番目のお客様の声です。緑色の背景で表示されています。</div>
+        <div class="slide-author">佐藤花子 - 株式会社B</div>
+      </div>
+      
+      <div class="slide slide3">
+        <div class="slide-text">これは3番目のお客様の声です。青色の背景で表示されています。</div>
+        <div class="slide-author">山田次郎 - 株式会社C</div>
+      </div>
+      
+      <div class="slide slide4">
+        <div class="slide-text">これは4番目のお客様の声です。オレンジ色の背景で表示されています。</div>
+        <div class="slide-author">鈴木美咲 - 株式会社D</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="controls">
+    <button class="btn" onclick="nextSlide()">次のスライドへ →</button>
+    <button class="btn" onclick="toggleAuto()" id="autoBtn">自動スライド開始</button>
+  </div>
+  
+  <script>
+    let currentIndex = 0;
+    let isTransitioning = false;
+    let autoInterval = null;
+    let isAutoRunning = false;
+    
+    const slider = document.getElementById('slider');
+    const currentDisplay = document.getElementById('current');
+    const statusDisplay = document.getElementById('status');
+    const autoBtn = document.getElementById('autoBtn');
+    
+    function updateSliderPosition() {
+      const translateX = -(currentIndex * 8.333333);
+      slider.style.transform = `translateX(${translateX}%)`;
+      
+      // 表示する番号を計算（1-4の範囲でループ）
+      const displayNumber = (currentIndex % 4) + 1;
+      currentDisplay.textContent = displayNumber;
+    }
+    
+    function nextSlide() {
+      if (isTransitioning) return;
+      
+      isTransitioning = true;
+      currentIndex++;
+      
+      updateSliderPosition();
+      
+      // バックグラウンドでリセット（ユーザーに見えないタイミングで）
+      setTimeout(() => {
+        // 8番目（2セット目の最後）に到達したら、アニメーションなしで最初に戻る
+        if (currentIndex >= 8) {
+          slider.style.transition = 'none';
+          currentIndex = 0;
+          const translateX = -(currentIndex * 8.333333);
+          slider.style.transform = `translateX(${translateX}%)`;
+          
+          // 次回のアニメーションのためにtransitionを元に戻す
+          setTimeout(() => {
+            slider.style.transition = 'transform 0.5s ease-in-out';
+          }, 50);
+        }
+        isTransitioning = false;
+      }, 500);
+    }
+    
+    function startAuto() {
+      if (autoInterval) clearInterval(autoInterval);
+      autoInterval = setInterval(nextSlide, 3000);
+      isAutoRunning = true;
+      statusDisplay.textContent = '自動スライド実行中';
+      autoBtn.textContent = '自動スライド停止';
+    }
+    
+    function stopAuto() {
+      if (autoInterval) {
+        clearInterval(autoInterval);
+        autoInterval = null;
+      }
+      isAutoRunning = false;
+      statusDisplay.textContent = '手動モード';
+      autoBtn.textContent = '自動スライド開始';
+    }
+    
+    function toggleAuto() {
+      if (isAutoRunning) {
+        stopAuto();
+      } else {
+        startAuto();
+      }
+    }
+    
+    // 初期表示
+    updateSliderPosition();
+  </script>
+</body>
+</html>
