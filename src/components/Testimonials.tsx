@@ -106,13 +106,11 @@ const Testimonials: React.FC = () => {
     
     setIsTransitioning(true);
     setCurrentIndex(prev => {
-      let next;
-      
       // 現在が0の場合は、2セット目の最後（testimonials.length * 2 - 1）に移動
       if (prev <= 0) {
         if (sliderRef.current) {
           sliderRef.current.style.transition = 'none';
-          next = testimonials.length * 2 - 1;
+          const next = testimonials.length * 2 - 1;
           
           // 次回のアニメーションのためにtransitionを元に戻す
           setTimeout(() => {
@@ -121,18 +119,21 @@ const Testimonials: React.FC = () => {
             }
             setIsTransitioning(false);
           }, 50);
+          
+          return next;
         }
+        return prev; // fallback
       } else {
         // 通常のケース：前のスライドに戻る
-        next = prev - 1;
+        const next = prev - 1;
         
         // トランジション完了後にisTransitioningを解除
         setTimeout(() => {
           setIsTransitioning(false);
         }, 500);
+        
+        return next;
       }
-      
-      return next;
     });
   };
 
